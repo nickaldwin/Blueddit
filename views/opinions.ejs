@@ -1,0 +1,69 @@
+<%- include('partials/header') -%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opinion</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+</head>
+<body>
+    <h1 class="text-center text-2xl text-purple-700 mt-12"><%= user.userName %> has <%= left %> Opinions</h1>
+    <br>
+    <% if (locals.messages.errors) { %>
+        <% messages.errors.forEach( el => { %>
+            <div class="alert alert-danger"><%= el.msg %></div>
+        <% }) %>    
+    <% } %>
+    <br>
+    <!-- Opinion submission element -->
+    <form class="text-center" action="/opinions/createOpinion" enctype="multipart/form-data" method='POST'>
+        <!-- opinion title element -->
+        <div>
+            <label for="Opinion"> Add your opinion title here (required): </label>
+            <input class="border-2 border-purple-200 rounded-lg" type="text" placeholder="Enter Opinion Title" name='opinionTitle'>
+        </div>
+        <br>
+        <div>
+            <label for="Opinion"> Add your opinion here (required): </label>
+            <input class="border-2 border-purple-200 rounded-lg" type="text" placeholder="Enter Opinion" name='opinionItem'>
+        </div>
+
+        <br>
+        <!-- Image upload element -->
+        <div class="container-sm w-1/6 mb-3">
+            <label for="imgUpload" class="form-label">Add an image (required):</label>
+            <input type="file" class="form-control border-2 border-purple-200 rounded-lg" id="imageUpload" name="file">
+        </div>
+        <!-- Submit button -->
+        <input class="h-6 px-5 m-2 text-purple-100 transition-colors duration-150 bg-purple-700 rounded-lg focus:shadow-outline hover:bg-purple-800" type="submit">
+        <!-- Feed button -->
+        <a class="h-6 px-6 m-2 text-purple-100 transition-colors duration-150 bg-purple-700 rounded-lg focus:shadow-outline hover:bg-purple-800 py-0.5" href="/feed">Go to Feed</a>
+        <!-- Logout button -->
+        <a class="h-6 px-6 m-2 text-purple-100 transition-colors duration-150 bg-purple-700 rounded-lg focus:shadow-outline hover:bg-purple-800 py-0.5" href="/logout">Logout</a>
+    </form>
+    <br>
+    <!-- Opinion list item -->
+    <ul class="container space-y-5 sm:mx-auto max-w-xl">
+    <% opinions.forEach( el => { %>
+            <li class='opinionItem border border-purple-100 text-purple-700 rounded-md shadow-md hover:shadow-lg pl-16 p-4 ease-linear transition duration-150' data-id='<%=el._id%>'>
+                <!-- add title -->
+                <h2><%= el.title %></h2>
+                <!-- add userName -->
+                <h2><%= el.user %></h2>
+                <div class="flex flex-col mb-2"><img class="img-fluid" src="<%= el.image%>" /></div>
+                <div class="justify-center flex flex-row">
+                    <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.opinion %></span>    
+                    <span class="del far fa-trash-alt pl-10 grid"> </span>
+                </div>
+            </li>
+    <% }) %>    
+    </ul>
+    <script src="js/main.js"></script>
+</body>
+</html>

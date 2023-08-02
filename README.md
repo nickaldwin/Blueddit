@@ -1,2 +1,2 @@
 # Blueddit
-Mern Social app
+Mern Social app using MVC architecture
