@@ -8,7 +8,7 @@ const flash = require("express-flash");
 const logger = require("morgan");
 const connectDB = require("./config/database");
 const mainRoutes = require("./routes/main");
-const opinionRoutes = require("./routes/blueddit");
+const opinionRoutes = require("./routes/opinion");
 const feedRoutes = require("./routes/feed.js");
 // whenever I connect to the server from the PORT declared in the .env file, the PORT that we are declaring here is the one loggin in the console.
 // that threw me out for a bit since I had port 2121 in my .env file!
