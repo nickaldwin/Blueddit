@@ -1,4 +1,4 @@
-const Opinion = require("../models/Opinion");
+const Opinion = require("../models/Blueddit");
 const cloudinary = require("../middleware/cloudinary");
 const validator = require("validator");
 
