@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Opinion</title>
+    <title>Blueddit</title>
     <link rel="stylesheet" href="css/style.css">
     <link
     rel="stylesheet"
@@ -13,7 +13,7 @@
   />
 </head>
 <body>
-    <h1 class="text-center text-2xl text-purple-700 mt-12"><%= user.userName %> has <%= left %> Opinions</h1>
+    <h1 class="text-center text-2xl text-purple-700 mt-12"><%= user.userName %> has <%= left %> Blueddit</h1>
     <br>
     <% if (locals.messages.errors) { %>
         <% messages.errors.forEach( el => { %>
@@ -22,7 +22,7 @@
     <% } %>
     <br>
     <!-- Opinion submission element -->
-    <form class="text-center" action="/opinions/createOpinion" enctype="multipart/form-data" method='POST'>
+    <form class="text-center" action="/blueddit/createOpinion" enctype="multipart/form-data" method='POST'>
         <!-- opinion title element -->
         <div>
             <label for="Opinion"> Add your opinion title here (required): </label>
