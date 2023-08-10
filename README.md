@@ -19,4 +19,5 @@ An MVP Mern Social app using MVC architecture
 ---
 
 ### Run
+`npm start`
 
